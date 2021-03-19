@@ -32,5 +32,17 @@ export default {
       title: "Author",
       to: [{ type: "author" }],
     },
+    {
+      name: "instagram",
+      type: "string",
+      description: "Instagram page link.",
+      title: "Instagram",
+    },
+    {
+      name: "facebook",
+      type: "string",
+      description: "Facebook page link.",
+      title: "Facebook",
+    },
   ],
 };

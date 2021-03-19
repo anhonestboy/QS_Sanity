@@ -41,6 +41,12 @@ export default {
         "This ends up on summary pages, on Google, when people share your post in social media.",
     },
     {
+      name: 'imagesGallery',
+      title: 'Images gallery',
+      type: 'array',
+      of: [{ type: 'image' }]
+     },
+    {
       name: "authors",
       title: "Authors",
       type: "array",

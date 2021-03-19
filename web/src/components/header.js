@@ -1,33 +1,23 @@
 import { Link } from "gatsby";
 import React from "react";
-import Icon from "./icon";
-import { cn } from "../lib/helpers";
+import logo from "../images/MMlogo.png"
 
-import * as styles from "./header.module.css";
+import MenuIndex from "./menu"
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
-  <div className={styles.root}>
-    <div className={styles.wrapper}>
-      <div className={styles.branding}>
-        <Link to="/">{siteTitle}</Link>
-      </div>
-
-      <button
-        className={styles.toggleNavButton}
-        onClick={showNav ? onHideNav : onShowNav}
-      >
-        <Icon symbol="hamburger" />
-      </button>
-
-      <nav className={cn(styles.nav, showNav && styles.showNav)}>
-        <ul>
-          <li>
-            <Link to="/archive/">Archive</Link>
-          </li>
-        </ul>
-      </nav>
+const Header = ({ siteTitle }) => (
+  <div className="flex items-center flex-row h-40">
+    <div className="social flex-grow justify-self-start">
+    </div>
+    <div className="logo flex-grow-0 justify-self-center">
+      <Link to="/">
+        <img src={logo} alt={siteTitle} className="w-60" />
+      </Link>
+    </div>
+    <div className="menu flex-grow justify-self-end">
+      <MenuIndex />
     </div>
   </div>
+
 );
 
 export default Header;

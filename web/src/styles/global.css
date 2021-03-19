@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Butler Black";
+    font-weight: 400;
+    src: url("../../public/fonts/Butler-Black.woff") format("woff");
+  }
+  h1 {
+    @apply text-8xl;
+    @apply font-serif;
+  }
+  h2 {
+    @apply text-5xl;
+    @apply font-serif;
+  }
+  h3 {
+    @apply text-3xl;
+    @apply font-serif;
+  }
+}
+
+@keyframes fadeIn {
+    0% {display:none; opacity:0;}
+    1% {display:block; opacity:0;}
+    100% {display:block; opacity:1;}
+  }
+@keyframes fadeOut {
+  0% {display:block; opacity:1;}
+  1% {display:block; opacity:1;}
+  90% {display: block; opacity:0.9;}
+  100% {display: none; opacity:0;}
+}
+
+

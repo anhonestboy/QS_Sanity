@@ -38,6 +38,7 @@ export const query = graphql`
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
+      instagram
       keywords
     }
     posts: allSanityPost(
@@ -49,12 +50,15 @@ export const query = graphql`
         node {
           id
           publishedAt
+          categories {
+            title
+          }
           mainImage {
             ...SanityImage
             alt
           }
           title
-          _rawExcerpt
+          _rawExcerpt          
           slug {
             current
           }
@@ -96,10 +100,9 @@ const IndexPage = (props) => {
         keywords={site.keywords}
       />
       <Container>
-        <h1 hidden>Welcome to {site.title}</h1>
         {postNodes && (
           <BlogPostPreviewList
-            title="Latest blog posts"
+            title="Latest stories"
             nodes={postNodes}
             browseMoreHref="/archive/"
           />
