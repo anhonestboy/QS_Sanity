@@ -7,6 +7,11 @@ import React from "react";
 import { buildImageObj } from "../lib/helpers";
 import { imageUrlFor } from "../lib/image-url";
 
+import Img from "gatsby-image"
+import {getGatsbyImageData} from 'gatsby-source-sanity'
+import {GatsbyImage} from 'gatsby-plugin-image'
+
+
 function BlogPost(props) {
   const {
     _rawBody,
@@ -14,10 +19,14 @@ function BlogPost(props) {
     categories,
     title,
     mainImage,
+    photoGallery,
     publishedAt,
   } = props;
+
+
   return (
     <article className={styles.root}>
+
       {mainImage && mainImage.asset && (
         <div className={styles.mainImage}>
           <img
@@ -29,6 +38,7 @@ function BlogPost(props) {
               .url()}
             alt={mainImage.alt}
           />
+
         </div>
       )}
       <Container>
@@ -36,6 +46,18 @@ function BlogPost(props) {
           <div className={styles.mainContent}>
             <h1 className={styles.title}>{title}</h1>
             {_rawBody && <PortableText blocks={_rawBody} />}
+
+            <div className="gallery">
+            {photoGallery && (
+              <ul>
+                {photoGallery.map((gallery) => (
+                  <Img fluid={gallery.asset.fluid} alt={gallery.alt} />
+                ))}
+              </ul>
+            )}
+          </div>
+
+
           </div>
           <aside className={styles.metaContent}>
             {publishedAt && (
@@ -58,6 +80,11 @@ function BlogPost(props) {
             )}
           </aside>
         </div>
+
+
+
+        
+
       </Container>
     </article>
   );

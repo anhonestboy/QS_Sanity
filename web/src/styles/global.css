@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+
 @layer base {
   @font-face {
     font-family: "Butler Black";
@@ -19,6 +21,12 @@
   h3 {
     @apply text-3xl;
     @apply font-serif;
+  }
+  h5 {
+    @apply text-base;
+    @apply font-mono;
+    @apply tracking-widest;
+    @apply text-gray;
   }
 }
 

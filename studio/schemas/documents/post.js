@@ -40,11 +40,11 @@ export default {
       description:
         "This ends up on summary pages, on Google, when people share your post in social media.",
     },
-    {
-      name: 'imagesGallery',
-      title: 'Images gallery',
+     {
+      name: 'photoGallery',
+      title: 'Photo gallery',
       type: 'array',
-      of: [{ type: 'image' }]
+      of: [{ type: 'galleryImage' }]
      },
     {
       name: "authors",

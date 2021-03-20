@@ -1,11 +1,15 @@
 import { graphql } from "gatsby";
+
 import BlogPost from "../components/blog-post";
 import React from "react";
+
+
 import GraphQLErrorList from "../components/graphql-error-list";
 import Layout from "../containers/layout";
 import Container from "../components/container";
 import SEO from "../components/seo";
 import { toPlainText } from "../lib/helpers";
+
 
 export const query = graphql`
   query BlogPostTemplateQuery($id: String!) {
@@ -19,6 +23,14 @@ export const query = graphql`
       mainImage {
         ...SanityImage
         alt
+      }
+      photoGallery {
+        alt
+        asset {
+          fluid(maxWidth: 500) {
+            ...GatsbySanityImageFluid_withWebp
+          }
+        }
       }
       title
       slug {
@@ -60,6 +72,8 @@ export const query = graphql`
 const BlogPostTemplate = (props) => {
   const { data, errors } = props;
   const post = data && data.post;
+
+
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
