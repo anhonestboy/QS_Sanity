@@ -8,7 +8,10 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import author from "./documents/author";
 import category from "./documents/category";
 import post from "./documents/post";
+import w_category from "./documents/w_category";
+import wedding from "./documents/wedding";
 import siteSettings from "./documents/siteSettings";
+import HomePage from "./documents/homepage";
 
 // Object types
 import bodyPortableText from "./objects/bodyPortableText";
@@ -21,14 +24,17 @@ import authorReference from "./objects/authorReference";
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
   // We name our schema
-  name: "blog",
+  name: "QuattroStudio",
   // Then proceed to concatenate our our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
     siteSettings,
+    HomePage,
     post,
+    wedding,
+    w_category,
     category,
     author,
     mainImage,

@@ -29,6 +29,11 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-dark-mode`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-no-index`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-source-sanity",
       options: {
@@ -36,6 +41,14 @@ module.exports = {
         token: process.env.SANITY_READ_TOKEN,
         watchMode: !isProd,
         overlayDrafts: !isProd,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /\.inline\.svg$/
+        }
       },
     },
   ],

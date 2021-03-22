@@ -44,5 +44,11 @@ export default {
       description: "Facebook page link.",
       title: "Facebook",
     },
+    {
+      name: "pinterest",
+      type: "string",
+      description: "Pinterest page link.",
+      title: "Pinterest",
+    },
   ],
 };

@@ -1,16 +1,13 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { filterOutDocsPublishedInTheFuture, filterOutDocsWithoutSlugs, mapEdgesToNodes, } from "../lib/helpers";
-import Img from "gatsby-image"
 
-import WeddingPreviewList from "../components/wedding/wedding-preview-list";
+import BlogPostList from "../components/blog/blog-post-preview-list";
 import Container from "../components/container";
 
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
-
-import Hero01 from "../components/blocks/hero01";
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -35,45 +32,31 @@ export const query = graphql`
     }
   }
 
-  query IndexPageQuery {
+  query YourDayPageQuery {
     site: sanitySiteSettings(_id: { regex: "/(drafts.|)siteSettings/" }) {
       title
       description
       instagram
       keywords
     }
-    homepage: sanityHomepage {
-      HomeHeroTitle
-      HomeHeroMainImage {
-        asset {
-          fluid {
-            ...GatsbySanityImageFluid_withWebp_noBase64
-          }
-        }
-        alt
-      }
-      _rawHomeDescription(resolveReferences: { maxDepth: 5 })
-      homeTitlesubtitle
-    }
-    weddings: allSanityWedding(
+    posts: allSanityPost(
       limit: 6
-      sort: {fields: publishedAt, order: DESC}
-      filter: {slug: {current: {ne: "null"}}, publishedAt: {ne: "null"}, featured: {eq: true}}
+      sort: { fields: [publishedAt], order: DESC }
+      filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
     ) {
       edges {
         node {
           id
-          title
           publishedAt
-          _rawExcerpt
-          featured
-          w_categories {
+          categories {
             title
           }
           mainImage {
             ...SanityImage
             alt
-          }   
+          }
+          title
+          _rawExcerpt          
           slug {
             current
           }
@@ -83,7 +66,7 @@ export const query = graphql`
   }
 `;
 
-const IndexPage = (props) => {
+const YourDayPage = (props) => {
   const { data, errors } = props;
 
   if (errors) {
@@ -95,10 +78,8 @@ const IndexPage = (props) => {
   }
 
   const site = (data || {}).site;
-  const homepage = (data || {}).homepage;
-
-  const weddingNodes = (data || {}).weddings
-    ? mapEdgesToNodes(data.weddings)
+  const postNodes = (data || {}).posts
+    ? mapEdgesToNodes(data.posts)
         .filter(filterOutDocsWithoutSlugs)
         .filter(filterOutDocsPublishedInTheFuture)
     : [];
@@ -116,19 +97,11 @@ const IndexPage = (props) => {
         description={site.description}
         keywords={site.keywords}
       />
-
-  
-
-
-
       <Container>
-
-      <Hero01 {...homepage}/>
-
-        {weddingNodes && (
-          <WeddingPreviewList
-            title="weddings"
-            nodes={weddingNodes}
+        {postNodes && (
+          <BlogPostList
+            title="Your Day Blog"
+            nodes={postNodes}
             browseMoreHref="/archive/"
           />
         )}
@@ -137,4 +110,4 @@ const IndexPage = (props) => {
   );
 };
 
-export default IndexPage;
+export default YourDayPage;

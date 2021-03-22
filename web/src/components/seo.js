@@ -47,7 +47,7 @@ function SEO({ description, lang, meta, keywords, title, image }) {
         },
         {
           name: "twitter:creator",
-          content: siteAuthor,
+          content: "Mary & Maurizio Photography",
         },
         {
           name: "twitter:title",
@@ -93,6 +93,7 @@ const detailsQuery = graphql`
       title
       description
       keywords
+      facebook
       author {
         name
       }

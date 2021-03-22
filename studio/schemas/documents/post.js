@@ -40,12 +40,6 @@ export default {
       description:
         "This ends up on summary pages, on Google, when people share your post in social media.",
     },
-     {
-      name: 'photoGallery',
-      title: 'Photo gallery',
-      type: 'array',
-      of: [{ type: 'galleryImage' }]
-     },
     {
       name: "authors",
       title: "Authors",
@@ -74,6 +68,12 @@ export default {
       type: "bodyPortableText",
       title: "Body",
     },
+    {
+      name: 'photoGallery',
+      title: 'Photo gallery',
+      type: 'array',
+      of: [{ type: 'galleryImage' }]
+     },
   ],
   orderings: [
     {
@@ -111,15 +111,16 @@ export default {
       publishedAt: "publishedAt",
       slug: "slug",
       media: "mainImage",
+      category: "categories",
     },
-    prepare({ title = "No title", publishedAt, slug = {}, media }) {
-      const dateSegment = format(new Date(publishedAt), "yyyy/MM");
-      const path = `/${dateSegment}/${slug.current}/`;
+    prepare({ title = "No title", media }) {
       return {
         title,
         media,
-        subtitle: publishedAt ? path : "Missing publishing date",
       };
     },
   },
 };
+
+
+

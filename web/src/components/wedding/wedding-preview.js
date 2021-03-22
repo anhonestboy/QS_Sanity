@@ -1,18 +1,17 @@
-import { buildImageObj, cn, getBlogUrl } from "../lib/helpers";
+import { buildImageObj } from "../../lib/helpers";
 import { Link } from "gatsby";
-import * as styles from "./blog-post-preview.module.css";
-import PortableText from "./portableText";
+import * as styles from "./wedding.module.css";
 import React from "react";
 import { format } from "date-fns";
-import { imageUrlFor } from "../lib/image-url";
+import { imageUrlFor } from "../../lib/image-url";
 
-function BlogPostPreview(props) {
-  const categories = props.categories
+function WeddingPreview(props) {
+  const categories = props.w_categories
 
   return (
-    <Link to={getBlogUrl(props.publishedAt, props.slug.current)}>
+    <Link to={props.slug.current}>
     
-    <div className={styles.post_list_link}>
+    <div className={`border-gray dark:border-text_dark ${styles.post_list_link}`}>
         {props.mainImage && props.mainImage.asset && (
           <img
             src={imageUrlFor(buildImageObj(props.mainImage))
@@ -21,7 +20,7 @@ function BlogPostPreview(props) {
               .auto("format")
               .url()}
             alt={props.mainImage.alt}
-            className="w-full m-0"
+            className="w-full m-0 shadow-lg"
           />
         )}
        
@@ -34,7 +33,7 @@ function BlogPostPreview(props) {
       </div>
           )}
 
-        <h3 className="text-5xl m-10">{props.title}</h3>        
+        <h2 className="text-5xl m-10">{props.title}</h2>        
         {/* {props._rawExcerpt && (
           <div className="">
             <PortableText blocks={props._rawExcerpt} />
@@ -49,4 +48,4 @@ function BlogPostPreview(props) {
   );
 }
 
-export default BlogPostPreview;
+export default WeddingPreview;

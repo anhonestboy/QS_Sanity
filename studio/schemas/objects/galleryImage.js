@@ -7,6 +7,11 @@ export default {
     },
     fields: [
       {
+        title: 'Add this to Home Page',
+        name: 'featured',
+        type: 'boolean'
+      },
+      {
         name: "caption",
         type: "string",
         title: "Caption",

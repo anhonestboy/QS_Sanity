@@ -1,10 +1,15 @@
 import React from "react";
-import Header from "./header";
+import Header from "./header/header";
+import Helmet from 'react-helmet';
 
 import "../styles/layout.css";
 
 const Layout = ({ children, siteTitle }) => (
   <>
+    <Helmet>
+      <link rel="stylesheet" href="https://use.typekit.net/jgd3urv.css" />
+    </Helmet>
+
     <Header siteTitle={siteTitle} />
     <div className="">{children}</div>
     <footer className="">

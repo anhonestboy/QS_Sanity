@@ -7,28 +7,30 @@ const ContainerMenu = styled.div`
     top:0;
     left:0;
     z-index:40;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     animation-name: ${props => props.open ? "fadeIn" : "fadeOut"};
-    display: ${props => props.open ? "block" : "none"};
+    transform: ${props => props.open ? "translateY(0%)" : "translateY(100%)"};
     animation-duration: 0.3s;
     overflow: hidden;
 `
 const Hamburger = styled.div`
-    background-color: ${props => props.open ? "white" : "#202217;"};
-    width: 30px;
-    height: 3px;
+    background-color: ${props => props.open ? "#d2c69e" : "black;"};
+    width: 20px;
+    height: 4px;
     transform-origin: center;
     transition: .5s ease-in-out;
     align-self: center;
     position: relative;
-    top: 20px;
+    top: 31px;
+    left: 18px;
     transform: ${props => (props.open ? "rotate(-45deg)" : "inherit")};
+    width: ${props => (props.open ? "27px" : "20px")};
 
     ::before,
     ::after {
-        width: 30px;
-        height: 3px;
+        width: 27px;
+        height: 4px;
         background-color: #111;
         content: "";
         position: absolute;
@@ -38,7 +40,7 @@ const Hamburger = styled.div`
     ::before {
         transform: ${props => props.open ? "rotate(-90deg) translate(-10px, 0px)" : "rotate(0deg)"};
         top: -10px;
-        background-color: ${props => props.open ? "white" : "#202217;"};
+        background-color: ${props => props.open ? "#d2c69e" : "black;"};
         transition: .5s ease-in-out;
     }
 
@@ -46,22 +48,22 @@ const Hamburger = styled.div`
         opacity: ${props => (props.open ? "0" : "1")};
         transform: ${props => (props.open ? "rotate(90deg) " : "rotate(0deg)")};
         top: 10px;
-        background-color: ${props => props.open ? "white" : "#202217;"};
+        background-color: ${props => props.open ? "#d2c69e" : "black;"};
         transition: .5s ease-in-out;
     }
     `
 
-const MenuIndex = () => {
+const MenuIndex = ({theme}) => {
     const [navbarOpen, setNavbarOpen] = useState(false)
-       
+    
     return (
-        <nav className="grid grid-flow-col auto-cols-auto h-full w-100 pr-10 items-center place-items-end">
-           
+        
+            <>
              <div className="relative z-50" navbarOpen={navbarOpen} onKeyDown={() => setNavbarOpen(!navbarOpen)} onClick={() => setNavbarOpen(!navbarOpen)} aria-hidden="true">
                 {navbarOpen ? 
-                <div className="w-10 h-10 cursor-pointer"><Hamburger open /></div> 
+                <div className="w-16 h-16 cursor-pointer rounded-full"><Hamburger open /></div> 
                 : 
-                <div className="w-10 h-10 cursor-pointer"><Hamburger /></div>
+                <div className="w-16 h-16 cursor-pointer rounded-full bg-background dark:bg-text_dark"><Hamburger /></div>
                 }
              </div>
             {navbarOpen ? (
@@ -69,8 +71,8 @@ const MenuIndex = () => {
                 ) : (
                 <ContainerMenu />
                 )}
-
-        </nav>
+</>
+ 
     )
     };
    
