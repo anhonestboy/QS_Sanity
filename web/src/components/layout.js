@@ -2,7 +2,9 @@ import React from "react";
 import Header from "./header/header";
 import Helmet from 'react-helmet';
 
+
 import "../styles/layout.css";
+
 
 const Layout = ({ children, siteTitle }) => (
   <>
@@ -11,7 +13,7 @@ const Layout = ({ children, siteTitle }) => (
     </Helmet>
 
     <Header siteTitle={siteTitle} />
-    <div className="">{children}</div>
+    <div className="box">{children}</div>
     <footer className="">
       <div className="">
         <div className="">

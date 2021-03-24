@@ -11,6 +11,39 @@ import SEO from "../components/seo";
 import Layout from "../containers/layout";
 
 import Hero01 from "../components/blocks/hero01";
+import Approach01 from "../components/blocks/approach01";
+
+
+// import { gsap } from "gsap";
+// import { TextPlugin } from "gsap/TextPlugin";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// gsap.registerPlugin(TextPlugin, ScrollTrigger);
+
+
+// // Part 2
+// const sections = document.querySelectorAll('section');
+
+// sections.forEach((section, index) => {
+//   gsap.to(section, {autoAlpha: 1,
+//     scrollTrigger: {
+//       trigger: section,
+//       start: 'top bottom-=100',
+//       toggleActions: 'play none none reverse',
+//       markers: true
+//     }
+//   });
+  
+//   ScrollTrigger.create({
+//     trigger: section,
+//     id: index+1,
+//     start: 'top center',
+//     end: () => `+=${section.clientHeight + 30}`,
+//     toggleActions: 'play reverse none reverse',
+//     toggleClass: {targets: section, className: "is-active"},
+//     markers: true
+//   })
+  
+// })
 
 export const query = graphql`
   fragment SanityImage on SanityMainImage {
@@ -45,6 +78,16 @@ export const query = graphql`
     homepage: sanityHomepage {
       HomeHeroTitle
       HomeHeroMainImage {
+        ...SanityImage
+        asset {
+          fluid {
+            ...GatsbySanityImageFluid_withWebp_noBase64
+          }
+        }
+        alt
+      }
+      HomeHeroMainImageDark {
+        ...SanityImage
         asset {
           fluid {
             ...GatsbySanityImageFluid_withWebp_noBase64
@@ -123,7 +166,11 @@ const IndexPage = (props) => {
 
       <Container>
 
+
       <Hero01 {...homepage}/>
+
+
+      <Approach01 {...homepage} />
 
         {weddingNodes && (
           <WeddingPreviewList

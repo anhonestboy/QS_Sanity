@@ -4,6 +4,10 @@
 
 @layer base {
   @font-face {
+    font-family: "Butler Bold";
+    src: url("../../static/Butler-Bold.woff") format("woff");
+  }
+  @font-face {
     font-family: "Butler Black";
     src: url("../../static/Butler-Black.woff") format("woff");
   }
@@ -15,6 +19,8 @@
   body {
     @apply bg-background;
     @apply transition duration-300;
+    @apply text-grayBlack;
+    @apply text-lg;
   }
   h1 {
     @apply font-serif;
@@ -48,7 +54,6 @@
   }
   p {
     @apply font-sans;
-    @apply text-lg;
     @apply text-black dark:text-text_dark;
     @apply transition duration-300;
   }
@@ -105,4 +110,8 @@
 .toggle:checked {
   box-shadow: inset calc(var(--size) * 0.26) calc(var(--size) * -0.15) 0;
   transform: scale(1.1);
+}
+
+.blend {
+  mix-blend-mode: multiply;
 }

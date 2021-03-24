@@ -23,5 +23,10 @@ export default {
         type: "mainImage",
         title: "Home Hero - Main image",
       },
+      {
+        name: "HomeHeroMainImageDark",
+        type: "mainImage",
+        title: "Home Hero - Main image Dark Version",
+      },
     ],
   };

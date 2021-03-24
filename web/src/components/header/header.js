@@ -6,7 +6,7 @@ import Logo from "../../images/MM_logo.inline.svg";
 import Pittogramma from "../../images/MM_pitt.inline.svg";
 
 const Header = ({ siteTitle }) => (
-  <div className="grid grid-cols-3 w-full h-40">
+  <header className="grid grid-cols-3 w-full h-40">
     <div className="social flex justify-start items-center">
       <div className="relative sm:ml-5 md:ml-10">
         <ThemeToggle />
@@ -23,7 +23,7 @@ const Header = ({ siteTitle }) => (
         <MenuIndex />
       </nav>
     </div>
-  </div>
+  </header>
 
 );
 
